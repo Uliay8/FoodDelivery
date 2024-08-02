@@ -6,16 +6,16 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.fooddelivery.databinding.ActivityLoginUserBinding
+import com.example.fooddelivery.databinding.ActivitySingUpUserBinding
 
-class LoginUserActivity : AppCompatActivity() {
+class SingUpUserActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityLoginUserBinding
+    private lateinit var binding : ActivitySingUpUserBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityLoginUserBinding.inflate(layoutInflater)
+        binding = ActivitySingUpUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -23,14 +23,14 @@ class LoginUserActivity : AppCompatActivity() {
             insets
         }
 
-        binding.goUserSingUpBtn.setOnClickListener {
-            val intent = Intent(this@LoginUserActivity, SingUpUserActivity :: class.java)
+        binding.goUserLoginUpBtn.setOnClickListener {
+            val intent = Intent(this@SingUpUserActivity, LoginUserActivity :: class.java)
             startActivity(intent)
             finish()
         }
-        binding.loginBtn.setOnClickListener {
-            // проверка аккаунта должна быть
-            val intent = Intent(this@LoginUserActivity, MainActivity :: class.java)
+        binding.createAccountBtn.setOnClickListener {
+            // создание аккаунта тут должно быть
+            val intent = Intent(this@SingUpUserActivity, LocationActivity :: class.java)
             startActivity(intent)
             finish()
         }
