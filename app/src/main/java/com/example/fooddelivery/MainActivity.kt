@@ -5,8 +5,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.fooddelivery.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,34 +24,10 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        changeFragment(HomeFragment())
+        val bottomNavView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        val navigationView = findNavController(R.id.fragment_container)
 
-        binding.bottomNavigationView.setOnItemSelectedListener {
-            when(it.itemId) {
-                R.id.home -> {
-                    changeFragment(HomeFragment())
-                }
-                R.id.card -> {
-                    changeFragment(CardFragment())
-                }
-                R.id.search -> {
-                    changeFragment(SearchFragment())
-                }
-                R.id.history -> {
-                    changeFragment(HistoryFragment())
-                }
-                R.id.profile -> {
-                    changeFragment(ProfileFragment())
-                }
-            }
-            return@setOnItemSelectedListener true
-        }
-    }
+        bottomNavView.setupWithNavController(navigationView)
 
-    fun changeFragment(fragment : Fragment) {
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragment_container, fragment)
-        fragmentTransaction.commit()
     }
 }
