@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
@@ -17,6 +18,7 @@ import com.example.fooddelivery.Adapters.ImageSliderAdapter
 import com.example.fooddelivery.Adapters.PopularFoodAdapter
 import com.example.fooddelivery.Fragments.MenuBottomFragment
 import com.example.fooddelivery.Models.PopularModel
+import com.example.fooddelivery.Models.SharedModel
 import kotlin.math.abs
 
 class HomeFragment : Fragment() {
@@ -34,6 +36,8 @@ class HomeFragment : Fragment() {
     private lateinit var homeRV: RecyclerView
 
     private lateinit var goMenuText : TextView
+    private lateinit var sharedModel: SharedModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,8 +51,10 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         viewPager2 = view.findViewById(R.id.image_slider)
-        goMenuText = view.findViewById(R.id.go_to_menu)
 
+        sharedModel = ViewModelProvider(requireActivity()).get(SharedModel::class.java)
+
+        goMenuText = view.findViewById(R.id.go_to_menu)
         goMenuText.setOnClickListener {
             val bottomMenu = MenuBottomFragment()
             bottomMenu.show(parentFragmentManager, "Test")
@@ -70,6 +76,7 @@ class HomeFragment : Fragment() {
         listPopular.add(PopularModel(R.drawable.pop_menu_momo, "Momo", "9$"))
 
         popularAdapter = PopularFoodAdapter(requireContext(), listPopular)
+        popularAdapter.setSharedModel(sharedModel)
         homeRV.layoutManager = LinearLayoutManager(requireContext())
         homeRV.adapter = popularAdapter
 

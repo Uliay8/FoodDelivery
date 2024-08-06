@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fooddelivery.DetailsActivity
 import com.example.fooddelivery.Models.PopularModel
+import com.example.fooddelivery.Models.SharedModel
 import com.example.fooddelivery.databinding.FragmentHomeBinding
 import com.example.fooddelivery.databinding.HomeFoodItemBinding
 
@@ -17,6 +18,11 @@ class PopularFoodAdapter(
     var list: ArrayList<PopularModel>
 ) : RecyclerView.Adapter<PopularFoodAdapter.PopularViewHolder>() {
 
+    private lateinit var sharedModel: SharedModel
+
+    fun setSharedModel(videoModel:SharedModel){
+        sharedModel = videoModel
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularViewHolder {
         val binding = HomeFoodItemBinding.inflate(LayoutInflater.from(context), parent, false)
@@ -42,6 +48,15 @@ class PopularFoodAdapter(
             context.startActivity(intent)
         }
 
+        holder.addBtn.setOnClickListener{
+            if (sharedModel.inList(itemListModel)) {
+                sharedModel.deleteFromCard(itemListModel)
+                holder.addBtn.setText("Add To Card")
+            } else {
+                sharedModel.addToCard(itemListModel)
+                holder.addBtn.setText("Delete Choice")
+            }
+        }
     }
 
     class PopularViewHolder(binding: HomeFoodItemBinding ) : RecyclerView.ViewHolder(binding.root){
@@ -51,10 +66,11 @@ class PopularFoodAdapter(
         val foodPrice = binding.homeFoodPrice
 
         val item = binding.root
+        val addBtn = binding.foodBtnAdd
 
     }
 
-    @SuppressLint("NotifyDataSetChanged")
+
     fun updateList(newList:ArrayList<PopularModel>){
         list = newList
         notifyDataSetChanged()

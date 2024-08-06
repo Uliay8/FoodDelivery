@@ -7,11 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView.OnQueryTextListener
 import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fooddelivery.Adapters.PopularFoodAdapter
 import com.example.fooddelivery.Models.PopularModel
-import com.example.fooddelivery.databinding.ActivityStartBinding
+import com.example.fooddelivery.Models.SharedModel
 import com.example.fooddelivery.databinding.FragmentSearchBinding
 
 class SearchFragment : Fragment() {
@@ -20,6 +21,7 @@ class SearchFragment : Fragment() {
     private lateinit var adapter: PopularFoodAdapter
     private lateinit var searchlist: ArrayList<PopularModel>
     private lateinit var searchRV: RecyclerView
+    private lateinit var sharedModel: SharedModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +32,7 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSearchBinding.inflate(inflater, container, false)
+        sharedModel = ViewModelProvider(requireActivity()).get(SharedModel::class.java)
 
         searchlist = ArrayList()
         searchlist.add(PopularModel(R.drawable.pop_menu_burger, "Burger", "5$"))
@@ -46,6 +49,7 @@ class SearchFragment : Fragment() {
         searchlist.add(PopularModel(R.drawable.pop_menu_momo, "Momo", "9$"))
 
         adapter = PopularFoodAdapter(requireContext(), searchlist)
+        adapter.setSharedModel(sharedModel)
         searchRV = binding.searchRV
         searchRV.layoutManager = LinearLayoutManager(requireContext())
         searchRV.adapter = adapter
