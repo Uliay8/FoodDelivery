@@ -7,6 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.fooddelivery.Fragments.NotificationBottomFragment
 import com.example.fooddelivery.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -29,5 +30,9 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavView.setupWithNavController(navigationView)
 
+        binding.bellBtn.setOnClickListener {
+            val notificationFragment = NotificationBottomFragment()
+            notificationFragment.show(supportFragmentManager, "Test")
+        }
     }
 }

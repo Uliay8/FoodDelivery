@@ -1,19 +1,19 @@
-package com.example.fooddelivery
+package com.example.fooddelivery.Fragments
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fooddelivery.Adapters.CardAdapter
+import com.example.fooddelivery.EditingAnOrderActivity
 import com.example.fooddelivery.Models.PopularModel
 import com.example.fooddelivery.Models.SharedModel
-import com.example.fooddelivery.databinding.ActivityEditingAnOrderBinding
 import com.example.fooddelivery.databinding.FragmentCardBinding
 
 class CardFragment : Fragment() {
@@ -36,7 +36,7 @@ class CardFragment : Fragment() {
 
         sharedModel = ViewModelProvider(requireActivity()).get(SharedModel::class.java)
 
-        adapter = CardAdapter(requireContext(), sharedModel.cardItem.value?: ArrayList())
+        adapter = CardAdapter(requireContext(), sharedModel.cardItem.value ?: ArrayList())
         cardRV = binding.cardRV
         cardRV.layoutManager = LinearLayoutManager(requireContext())
         cardRV.adapter = adapter

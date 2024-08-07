@@ -1,13 +1,13 @@
-package com.example.fooddelivery
+package com.example.fooddelivery.Fragments
 
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,9 +16,9 @@ import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.fooddelivery.Adapters.ImageSliderAdapter
 import com.example.fooddelivery.Adapters.PopularFoodAdapter
-import com.example.fooddelivery.Fragments.MenuBottomFragment
 import com.example.fooddelivery.Models.PopularModel
 import com.example.fooddelivery.Models.SharedModel
+import com.example.fooddelivery.R
 import kotlin.math.abs
 
 class HomeFragment : Fragment() {

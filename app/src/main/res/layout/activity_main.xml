@@ -33,7 +33,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/bell"
+            android:id="@+id/bell_btn"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_marginEnd="24dp"

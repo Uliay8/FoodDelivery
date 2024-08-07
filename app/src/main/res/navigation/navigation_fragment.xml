@@ -7,27 +7,27 @@
 
     <fragment
         android:id="@+id/card"
-        android:name="com.example.fooddelivery.CardFragment"
+        android:name="com.example.fooddelivery.Fragments.CardFragment"
         android:label="fragment_card"
         tools:layout="@layout/fragment_card" />
     <fragment
         android:id="@+id/history"
-        android:name="com.example.fooddelivery.HistoryFragment"
+        android:name="com.example.fooddelivery.Fragments.HistoryFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history" />
     <fragment
         android:id="@+id/home"
-        android:name="com.example.fooddelivery.HomeFragment"
+        android:name="com.example.fooddelivery.Fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/profile"
-        android:name="com.example.fooddelivery.ProfileFragment"
+        android:name="com.example.fooddelivery.Fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/search"
-        android:name="com.example.fooddelivery.SearchFragment"
+        android:name="com.example.fooddelivery.Fragments.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
 </navigation>

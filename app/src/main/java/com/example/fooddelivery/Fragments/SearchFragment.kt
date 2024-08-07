@@ -1,18 +1,18 @@
-package com.example.fooddelivery
+package com.example.fooddelivery.Fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView.OnQueryTextListener
-import androidx.appcompat.widget.SearchView
+import android.widget.SearchView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fooddelivery.Adapters.PopularFoodAdapter
 import com.example.fooddelivery.Models.PopularModel
 import com.example.fooddelivery.Models.SharedModel
+import com.example.fooddelivery.R
 import com.example.fooddelivery.databinding.FragmentSearchBinding
 
 class SearchFragment : Fragment() {
@@ -61,8 +61,8 @@ class SearchFragment : Fragment() {
 
     private fun searchMenuFood() {
 
-        binding.searchItem.setOnQueryTextListener(object : OnQueryTextListener,
-            SearchView.OnQueryTextListener {
+        binding.searchItem.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 filteredList(query)
                 return true
