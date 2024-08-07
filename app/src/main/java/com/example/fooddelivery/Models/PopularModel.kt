@@ -33,6 +33,10 @@ class PopularModel {
         return foodPrice
     }
 
+    fun getOnlyPrice() : Int {
+        return foodPrice.substringBefore('$').toInt()
+    }
+
     fun setFoodImage(foodImage: Int?) {
         this.foodImage = foodImage
     }

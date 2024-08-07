@@ -5,4 +5,5 @@
     <color name="startGreen">#53E88B</color>
     <color name="endGreen">#15BE77</color>
     <color name="recyclerViewColor">#f4f4f4</color>
+    <color name="gray">#aaaaaa</color>
 </resources>

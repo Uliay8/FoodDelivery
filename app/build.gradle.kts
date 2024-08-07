@@ -52,4 +52,5 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.0")
     androidTestImplementation("androidx.navigation:navigation-testing:2.7.0")
+    implementation("com.airbnb.android:lottie:3.4.0")
 }

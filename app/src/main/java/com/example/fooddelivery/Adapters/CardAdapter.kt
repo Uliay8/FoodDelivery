@@ -29,6 +29,7 @@ class CardAdapter(
         holder.foodName.text = itemListModel.getFoodName()
         holder.foodPrice.text = itemListModel.getFoodPrice()
         itemListModel.getFoodImage()?.let { holder.foodImage.setImageResource(it) }
+        holder.foodCount.text = itemListModel.getFoodCount().toString()
 
         holder.plus.setOnClickListener {
             if (itemListModel.getFoodCount() < 10) {
@@ -72,8 +73,6 @@ class CardAdapter(
             if (position < list.size && position >= 0) {
                 list.removeAt(position)
                 notifyItemRemoved(position)
-//                notifyDataSetChanged()
-//                notifyItemRangeChanged(position, list.size)
 
             }
         }
